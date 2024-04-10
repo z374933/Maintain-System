@@ -1,0 +1,149 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "page/announcement.html?t=1"
+  },
+  "logoInfo": {
+    "title": "报修平台",
+    "image": "images/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "我的",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "公告",
+          "href": "page/announcement.html",
+          "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+        {
+          "title": "宿舍报修",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "申请报修",
+              "href": "page/student/request.html",
+              "icon": "fa fa-telegram",
+              "target": "_self"
+            },
+            {
+              "title": "我的申请",
+              "href": "page/student/myForms.html",
+              "icon": "fa fa-list",
+              "target": "_self"
+            },
+            {
+              "title": "报修概况",
+              "href": "page/student/statistics.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "维修管理",
+          "href": "",
+          "icon": "fa fa-github-alt",
+          "target": "_self",
+          "child": [
+            {
+              "title": "维修接单",
+              "href": "page/worker/request.html",
+              "icon": "fa fa-hand-pointer-o",
+              "target": "_self"
+            },
+            {
+              "title": "我的接单",
+              "href": "page/worker/myForms.html",
+              "icon": "fa fa-user",
+              "target": "_self"
+            },
+            {
+              "title": "我的评价",
+              "href": "page/worker/appraise.html",
+              "icon": "fa fa-comment-o",
+              "target": "_self"
+            },
+            {
+              "title": "维修概况",
+              "href": "page/worker/statistics.html",
+              "icon": "fa fa-bar-chart",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "系统管理",
+          "href": "",
+          "icon": "fa fa-user-md",
+          "target": "_self",
+          "child": [
+            {
+              "title": "学生管理",
+              "href": "page/admin/student/studentSetting.html",
+              "icon": "fa fa-child",
+              "target": "_self"
+            },
+            {
+              "title": "工程师管理",
+              "href": "page/admin/worker/workerSetting.html",
+              "icon": "fa fa-asterisk",
+              "target": "_self"
+            },
+            {
+              "title": "订单管理",
+              "href": "page/admin/forms/formSetting.html",
+              "icon": "fa fa-tasks",
+              "target": "_self"
+            },
+            {
+              "title": "分类管理",
+              "href": "page/admin/classify/classifySetting.html",
+              "icon": "fa fa-tags",
+              "target": "_self"
+            },
+            {
+              "title": "公告管理",
+              "href": "page/admin/billboard/billboardSetting.html",
+              "icon": "fa fa-university",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "宿舍维修概况",
+          "href": "../page/statistics.html",
+          "icon": "fa fa-bar-chart",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "关于",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "关于作者",
+          "href": "page/adminInfo/index.html",
+          "icon": "fa fa-address-card-o",
+          "target": "_self"
+        },
+        {
+          "title": "关于系统",
+          "href": "page/webInfo/index.html",
+          "icon": "fa fa-paper-plane-o",
+          "target": "_self"
+        }
+      ]
+    }
+  ]
+}

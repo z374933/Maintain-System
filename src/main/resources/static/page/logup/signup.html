@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--font-family-->
+	<link
+		href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext"
+		rel="stylesheet">
+	<!-- title of site -->
+	<title>学生注册</title>
+	<!-- For favicon png -->
+	<link rel="shortcut icon" type="image/icon" href="../../images/logo.png" />
+	<!--font-awesome.min.css-->
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<!--animate.css-->
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<!--bootstrap.min.css-->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<!-- bootsnav -->
+	<link rel="stylesheet" href="assets/css/bootsnav.css">
+	<!--style.css-->
+	<link rel="stylesheet" href="assets/css/style.css">
+	<!--responsive.css-->
+	<link rel="stylesheet" href="assets/css/responsive.css">
+	<link rel="stylesheet" href="../../css/layuimini.css">
+	<link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css">
+
+</head>
+
+<body>
+	<section class="signin">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="single-sign">
+						<div class="sign-bg">
+						</div><!--/.sign-bg -->
+					</div><!--/.single-sign -->
+				</div>
+				<div class="col-sm-8">
+					<div class="single-sign">
+						<div class="sign-content">
+							<h2>学生注册</h2>
+							<div class="signin-form">
+								<div class=" ">
+									<div class=" ">
+										<form action="signin.html">
+											<div class="form-group">
+												<label for="signin_form">学号/手机号</label>
+												<input name="id" style="padding: 0 18px;" type="number" class="form-control" id="signin_form" placeholder="请输入学号/手机号">
+											</div><!--/.form-group -->
+											<div class="form-group">
+												<label for="signin_form">密码</label>
+												<input name="password" type="password" class="form-control" id="signin_form" placeholder="请设置密码">
+											</div><!--/.form-group -->
+										</form><!--/form -->
+									</div><!--/.col -->
+								</div>
+							</div>
+							<div class="signin-footer">
+								<button type="button" class="btn signin_btn" data-toggle="modal"
+									data-target=".signin_modal">
+									注册
+								</button>
+								<p style="text-align: center;">
+									<a href="../login.html" style="color:#1391ff;">去登录</a>
+								</p>
+							</div>
+						</div>
+					</div><!--/.single-sign -->
+				</div><!--/.col -->
+			</div><!--/.row-->
+		</div><!--/.container -->
+	</section>
+	<footer class="footer-copyright">
+		<div id="scroll-Top">
+			<i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top"
+				title="" data-original-title="Back to Top" aria-hidden="true"></i>
+		</div>
+	</footer>
+	<script src="assets/js/jquery.js"></script>
+	<script src="../../lib/layui-v2.6.3/layui.js"></script>
+	<!--modernizr.min.js-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<!--bootstrap.min.js-->
+	<script src="assets/js/bootstrap.min.js"></script>
+	<!-- bootsnav js -->
+	<script src="assets/js/bootsnav.js"></script>
+	<!-- jquery.sticky.js -->
+	<script src="assets/js/jquery.sticky.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+	<!--Custom JS-->
+	<script src="assets/js/custom.js"></script>
+	<script>
+	layui.use(['form','jquery'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            layer = layui.layer;
+			$('.btn').on('click', function (e) {
+				e.preventDefault();
+				var id = $('input[name="id"]').val();
+				var password = $('input[name="password"]').val();
+				$.ajax({
+                    url: "/user/addUser",
+                    type: "POST",
+                    data: { 'id': id, 'password': password },
+                    dateType: "application/JSON",
+                    "success": function (e) {
+                        layer.msg(e);
+                    }
+                })
+        });
+    });
+	</script>
+
+</body>
+
+</html>

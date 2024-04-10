@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>AE博客时间轴 - 发展史</title>
+<meta name="keywords" content="AEINK,墨渊,AE博客"/>
+<meta name="description" content="AE博客(AEINK.COM)是一家乐享资源记忆点滴的博客,主要分享程序源码,站长工具,网络技术,免费空间,模板插件,网赚项目,各类资源,各类教程,QQ资源,手机应用,致力创造一个高质量分享平台."/>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+</head>
+<body>
+<div class="content">
+	<div class="wrapper">
+		<div class="light"><i></i></div>
+		<hr class="line-left">
+		<hr class="line-right">
+		<div class="main">
+			<h1 class="title">系统建设时间轴</h1>
+			<div class="year">
+				<h2><a href="#">项目建设<i></i></a></h2>
+				<div class="list">
+					<ul>
+						<li class="cls highlight">
+							<p class="date">11月8日</p>
+							<p class="intro">遇到第三个棘手问题</p>
+							<p class="version">&nbsp;</p>
+							<div class="more">
+								<p>啊？为什么后端存的session数据，另一个请求获取不到</p>
+							</div>
+						</li>
+						<li class="cls">
+							<p class="date">11月6日</p>
+							<p class="intro">遇到第二个棘手问题</p>
+							<p class="version">&nbsp;</p>
+							<div class="more">
+								<p>后端无法接收到前端传过来的json数组对象，后面改用了纯数组传给后端</p>
+							</div>
+						</li>
+						<li class="cls highlight">
+							<p class="date">11月5日</p>
+							<p class="intro">遇到第一个棘手问题</p>
+							<p class="version">&nbsp;</p>
+							<div class="more">
+								<p>早上起来做页面，就遇到跨域问题，花了一早上才解决</p>
+							</div>
+						</li>
+						<li class="cls">
+							<p class="date">11月4日</p>
+							<p class="intro">系统环境搭建</p>
+							<p class="version">&nbsp;</p>
+							<div class="more">
+								<p>机会总是给予先驱者，无视死亡率！</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="year">
+				<h2><a href="#">学习技术<i></i></a></h2>
+				<div class="list">
+					<ul>
+						<li class="cls">
+							<p class="date">11月2日</p>
+							<p class="intro">学习LayUI</p>
+							<p class="version">&nbsp;</p>
+							<div class="more">
+								<p>别管我，我还能学！</p>
+							</div>
+						</li>
+						<li class="cls highlight">
+							<p class="date">10月29</p>
+							<p class="intro">学习jQuery</p>
+							<p class="version">&nbsp;</p>
+							<div class="more">
+								<p>单靠JavaScript还是不行啊，上jQuery！</p>
+							</div>
+						</li>
+						<li class="cls">
+							<p class="date">10月22日</p>
+							<p class="intro">学习MyBatis-Plus</p>
+							<p class="version">&nbsp;</p>
+							<div class="more">
+								<p>不会吧，你还在手敲JDBC?直接上MyBatis-Plus好吧</p>
+							</div>
+						</li>
+						<li class="cls highlight">
+							<p class="date">10月8日</p>
+							<p class="intro">学习SpringBoot</p>
+							<p class="version">&nbsp;</p>
+							<div class="more">
+								<p>使用java进行开发,必定少不了SpringBoot了</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="year">
+				<h2><a href="#">系统策划<i></i></a></h2>
+				<div class="list">
+					<ul>
+						<li class="cls">
+							<p class="date">10月7日</p>
+							<p class="intro">技术选型</p>
+							<p class="version">&nbsp;</p>
+							<div class="more">
+								<p>结合自己的专业课，决定采用Java进行开发</p>
+							</div>
+						</li>
+						<li class="cls">
+							<p class="date">10月4日</p>
+							<p class="intro">架构选型</p>
+							<p class="version">&nbsp;</p>
+							<div class="more">
+								<p>考虑到设备的兼容性和使用性，决定使用B/S架构</p>
+							</div>
+						</li>
+						<li class="cls">
+							<p class="date">10月2日</p>
+							<p class="intro">确定课题</p>
+							<p class="version">&nbsp;</p>
+							<div class="more">
+								<p>当时参考了老师、同学、朋友的意见，决定此课题</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(".main .year .list").each(function(e, target){
+	var $target=$(target),
+	$ul = $target.find("ul");
+	$target.height($ul.outerHeight()), $ul.css("position", "absolute");
+}); 
+$(".main .year>h2>a").click(function(e){
+	e.preventDefault();
+	$(this).parents(".year").toggleClass("close");
+});
+</script>
+	<div style="background:#ccc;text-align:center"><a href="#">个人博客</a>&nbsp;&nbsp;<a href="#">GitHub</a>&nbsp;&nbsp;<a href="#">Gitee</a>&nbsp;&nbsp;<a href="#">免责声明</a>&nbsp;&nbsp;<a href="#">其他</a></div>
+</body>
+</html>

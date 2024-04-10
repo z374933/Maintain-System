@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报修申请</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css" media="all">
+    <script src="../../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+    <script src="../../lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script src="../../lib/echarts.js"></script>
+    <style>
+        .title{
+            margin: auto;
+            width: 100%;
+            text-align: center;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="title">订单统计</div>
+<!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+<div id="main" style="width: 90vw;height:80vh;"></div>
+
+</body>
+<script>
+    var studentData;
+    var arr = new Array(12).fill(0);
+    $.ajax({
+        "url": "/forms/workerMonth",
+        "type": "POST",
+        async: false,
+        "success": function (data) {
+            for(let i=0;data.length>i;i++){
+                console.log("当前值："+data[i].num)
+                arr[data[i].month-1]=data[i].num;
+            }
+        }
+    })
+    console.log("数据为：")
+    console.log(arr)
+
+
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    var option = {
+        xAxis: {
+            type: 'category',
+            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月','8月','9月','10月','11月','12月',]
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                data: arr,
+                type: 'bar'
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</html>

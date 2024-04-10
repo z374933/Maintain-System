@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../css/public.css" media="all">
+    <style>
+        .layui-table-cell {
+            width: 100px;
+            height: 100%;
+        }
+
+        img {
+            width: 85px;
+            height: 85px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">接单</a>
+        </script>
+
+    </div>
+</div>
+<script type="text/html" id="img">
+    <img src="../../../images/{{d.img}}" style="width: 85px;height: 85px;">
+</script>
+<script src="../../../lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="../../../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../../../js/lay-config.js" charset="utf-8"></script>
+<script>
+    //自己封装的天数计算函数
+    function getDaysSince(dateString) {
+        var currentDate = new Date(); // 获取当前日期
+        var targetDate = new Date(dateString); // 将指定日期字符串转换为Date对象
+
+        var timeDiff = Math.abs(currentDate - targetDate); // 计算两个日期相差的毫秒数
+        var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)); // 将毫秒数转换成天数并向上取整
+
+        return daysDiff;
+    }
+    $.ajax({
+        url: "/forms/list2",
+        type: "POST",
+        dateType: "application/JSON",
+        "success": function (e) {
+            console.log(e)
+        }
+    })
+    layui.use(['form', 'table'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table;
+
+        table.render({
+            elem: '#currentTableId',
+            url: '/forms/list2',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            cols: [[
+                { field: 'id', width: 120, title: 'ID', sort: true },
+                { field: 'student', width: 80, title: '学生' },
+                { field: 'room', width: 100, title: '宿舍', sort: true },
+                { field: 'classify', width: 100, title: '分类', sort: true },
+                { field: 'content', width: 300, title: '内容' },
+                { field: 'state', width: 80, title: '状态' },
+                { field: 'notes', width: 110, title: '评价' },
+                { field: 'createDate', width: 180, title: '注册时间', sort: true },
+                { field: 'updateDate', width: 180, title: '修改时间', sort: true },
+                { title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center" }
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true,
+            skin: 'line',
+            done:function (res,curr,count){
+                $.each(res.data, function (index, item) {
+                    //将已完成的项目背景设置为灰色
+                    if (item.state == "已完成") {
+                        var i = index + 1;
+                        $('tr').eq(i).css("background-color", "rgba(0,0,0,0.1)");
+                    }
+                    if(item.state == "待接单" && getDaysSince(item.createDate)>=3){
+                        var i = index + 1;
+                        $('tr').eq(i).css("background-color", "rgba(255,0,48,0.1)");
+                    }
+                });
+            }
+        });
+
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'edit') {
+                return false;
+            } else if (obj.event === 'delete') {
+                layer.confirm('确定接单么', function (index) {
+                    $.ajax({
+                        url: "/forms/workerGet",
+                        type: "POST",
+                        data: "id=" + data.id,
+                        dateType: "application/JSON",
+                    })
+                    obj.del();
+                    layer.close(index);
+                });
+            }
+        });
+
+    });
+</script>
+
+</body>
+
+</html>
